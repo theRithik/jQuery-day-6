@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<style>
+   
+    
+    .slide-inner img{
+        display:none;
+        width:500px;
+        height:300px;
+    }
+    .slide-inner{
+         width: 500px;
+         height: 300px;
+         position: relative;
+        overflow: hidden;
+        margin-left: 25px;
+    
+    }
+    .prev,.next{
+        float:left;
+        margin-top: 130px;
+        cursor:pointer;
+       
+    }
+    .prev{
+        position:absolute;
+        top:10px;
+        left: 40px;
+        z-index: 100;
+        color:black;
+    }
+    .next{
+        position:absolute;
+        top:10px;
+        left:500px;
+        color: black;
+    }
+    i.next:hover, i.prev:hover{
+        background:rgb(252, 249, 249);
+        z-index: 100;
+    }
+    .slide-inner img.active{
+        display: inline-block;
+    }
+
+    
+</style>
+
+
+</style>
+<body>
+   <div class="container">
+        <div class="slide-outer">
+           <i class="fa-solid fa-arrow-left fa-2x prev"></i>
+
+            <div class="slide-inner">
+                <img src="images/img3.jpg" class="active">
+                <img  src="images/img2.jpg" >
+                <img src="images/img1.jpg">
+
+        </div>
+        <i class="fa-solid fa-arrow-right fa-2x next"></i>
+    </div>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+   
+    <script>
+$(document).ready(function(){
+   (function($){
+    $.fn.mySlider=function(){
+        var currentImg =$('.active');
+    var nextImg = currentImg.next();
+        if(nextImg.length){
+        currentImg.removeClass('active').css('z-index', -10);
+        nextImg.addClass('active').css('z-index',10);
+       
+    };
+    }; return this
+})(jQuery)
+   $('.next').click(function(){
+    $(this).mySlider();
+   
+   })
+   $.fn.backSlider=function(){
+    var currentImg =$('.active');
+    var prevImg = currentImg.prev(); 
+    if(prevImg.length){
+        currentImg.removeClass('active').css('z-index', -10);
+        prevImg.addClass('active').css('z-index',10);
+
+
+    }
+   };
+   $('.prev').click(function(){
+    $(this).backSlider();
+   
+   })
+
+})
+    </script>
+</body>
+</html>
